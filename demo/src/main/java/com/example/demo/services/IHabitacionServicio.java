@@ -7,10 +7,11 @@ import java.util.List;
 public interface IHabitacionServicio {
     public List<Habitacion> obtenerTodo();
 
+    public Habitacion obtenerPorId(int id);
+
     public  Habitacion guardar(Habitacion habitacion);
 
-    public Habitacion obtenerPorId(long id);
+    public void eliminar(int id);
 
 
-    public void eliminar(long id);
 }

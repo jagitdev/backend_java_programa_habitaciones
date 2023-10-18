@@ -21,6 +21,7 @@ public class HabitacionControlador {
         return habitacionServicio.obtenerTodo();
     }
 
+    
     public ResponseEntity<Habitacion> guardarHabitacion(@RequestBody Habitacion habitacion) {
         Habitacion nuevaHabitacion = habitacionServicio.guardar(habitacion);
         return new ResponseEntity<>(nuevaHabitacion, HttpStatus.CREATED);
