@@ -17,11 +17,11 @@ public class HabitacionControlador {
 
     @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/habitaciones")
-    public List<Habitacion> obtenerClientes() {
+    public List<Habitacion> obtenerHabitaciones() {
         return habitacionServicio.obtenerTodo();
     }
 
-    
+
     public ResponseEntity<Habitacion> guardarHabitacion(@RequestBody Habitacion habitacion) {
         Habitacion nuevaHabitacion = habitacionServicio.guardar(habitacion);
         return new ResponseEntity<>(nuevaHabitacion, HttpStatus.CREATED);
