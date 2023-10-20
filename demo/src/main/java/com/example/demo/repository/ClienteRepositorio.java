@@ -1,7 +1,6 @@
 package com.example.demo.repository;
 
 import com.example.demo.model.Cliente;
-import com.example.demo.model.Habitacion;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClienteRepositorio extends JpaRepository<Cliente, Integer> {

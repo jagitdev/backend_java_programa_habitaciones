@@ -3,6 +3,8 @@ package com.example.demo.services;
 import com.example.demo.model.Habitacion;
 import com.example.demo.repository.HabitacionRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,5 +33,14 @@ public class HabitacionServicioImplementacion implements IHabitacionServicio{
     @Override
     public void eliminar(int id) {
         habitacionRepositorio.deleteById(id);
+    }
+
+
+
+    //prueba llamada por permite fumar y permite mascota
+
+    @Override
+    public List<Habitacion> findHabitacionMascotaFumar(@Param("fumador") Integer fumador, @Param("permiteAnimal") Integer permiteAnimal) {
+        return habitacionRepositorio.findHabitacionMascotaFumar(fumador, permiteAnimal);
     }
 }

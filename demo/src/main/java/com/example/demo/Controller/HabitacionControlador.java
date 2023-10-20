@@ -16,7 +16,7 @@ public class HabitacionControlador {
     private HabitacionServicioImplementacion habitacionServicio;
 
     @CrossOrigin(origins = "http://localhost:5173")
-    @GetMapping("/habitaciones")
+    @GetMapping(value = "/habitaciones")
     public List<Habitacion> obtenerHabitaciones() {
         return habitacionServicio.obtenerTodo();
     }
@@ -26,4 +26,18 @@ public class HabitacionControlador {
         Habitacion nuevaHabitacion = habitacionServicio.guardar(habitacion);
         return new ResponseEntity<>(nuevaHabitacion, HttpStatus.CREATED);
     }
+
+    @GetMapping(value = "/habitaciones", params = {"fumador", "permiteAnimal"})
+    @ResponseBody
+    public ResponseEntity<List<Habitacion>> buscarHabitaciones(@RequestParam Integer fumador, @RequestParam Integer permiteAnimal) {
+        List<Habitacion> habitaciones = habitacionServicio.findHabitacionMascotaFumar(fumador, permiteAnimal);
+
+        if (!habitaciones.isEmpty()) {
+
+            return new ResponseEntity<>(habitaciones, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
