@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.model.Cliente;
 import com.example.demo.model.Habitacion;
 import com.example.demo.services.HabitacionServicioImplementacion;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,15 @@ public class HabitacionControlador {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PutMapping("/habitaciones/{id}")
+    public ResponseEntity<Habitacion> actualizar(@PathVariable int id, @RequestBody Habitacion habitacion){
+        Habitacion habitacionPorId = habitacionServicio.obtenerPorId(id);
+        habitacionPorId.setOcupacion(habitacion.getOcupacion());
+
+        Habitacion habitacionActualizado = habitacionServicio.guardar(habitacionPorId);
+        return new ResponseEntity<>(habitacionActualizado, HttpStatus.CREATED);
     }
 
 }
