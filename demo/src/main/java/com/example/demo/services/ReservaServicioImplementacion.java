@@ -1,8 +1,10 @@
 package com.example.demo.services;
 
+import com.example.demo.model.Cliente;
 import com.example.demo.model.Reserva;
 import com.example.demo.repository.ReservaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +19,11 @@ public class ReservaServicioImplementacion implements IReservaServicio{
     public List<Reserva> obtenerTodo() {
         return reservaRepositorio.findAll();
     }
+
+    @Override
+    public Reserva findReservaDni(@Param("dni") String dni){
+        return reservaRepositorio.findReservaDni(dni);
+    };
 
     @Override
     public Reserva guardar(Reserva reserva) {

@@ -62,7 +62,4 @@ public class ClienteControlador {
         estadoClienteEliminado.put("eliminado", true);
         return ResponseEntity.ok(estadoClienteEliminado);
     }
-
-
-
 }
