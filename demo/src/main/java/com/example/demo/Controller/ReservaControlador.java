@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -39,4 +40,15 @@ public class ReservaControlador {
         return new ResponseEntity<>(nuevaReserva, HttpStatus.CREATED);
     }
 
+    @DeleteMapping(value = "/reservas/eliminar/{id}")
+    public ResponseEntity<HashMap<String, Boolean>> eliminarReserva(@PathVariable int id){
+
+        //llamamos al metodo deleteNumHabitacion lo hacemos con this ya que como la funcion es void no podemos crear un tipo <Cliente>
+        this.reservaServicio.eliminar(id);
+
+        //HashMap es para la respuesta que nos dara ya que DELETE no devuelve nada
+        HashMap<String, Boolean> estadoReservaEliminado = new HashMap<>();
+        estadoReservaEliminado.put("eliminado", true);
+        return ResponseEntity.ok(estadoReservaEliminado);
+    }
 }

@@ -18,6 +18,8 @@ public interface IHabitacionServicio {
 
     public List<Habitacion> findHabitacionMascotaFumar(Integer fumador, Integer permiteAnimal);
 
+    public  Habitacion findHabitacionNumHabitacion(Integer numHabitacion);
+
 
 
 

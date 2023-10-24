@@ -43,4 +43,9 @@ public class HabitacionServicioImplementacion implements IHabitacionServicio{
     public List<Habitacion> findHabitacionMascotaFumar(@Param("fumador") Integer fumador, @Param("permiteAnimal") Integer permiteAnimal) {
         return habitacionRepositorio.findHabitacionMascotaFumar(fumador, permiteAnimal);
     }
+
+    @Override
+    public Habitacion findHabitacionNumHabitacion(@Param("numHabitacion") Integer numHabitacion) {
+        return habitacionRepositorio.findHabitacionNumHabitacion(numHabitacion);
+    }
 }

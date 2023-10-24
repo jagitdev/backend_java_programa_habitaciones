@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -41,6 +42,14 @@ public class HabitacionControlador {
         }
     }
 
+    @GetMapping(value = "/habitaciones", params = {"numHabitacion"})
+    @ResponseBody
+    public ResponseEntity<Habitacion> findHabitacionNumHabitacion(@RequestParam Integer numHabitacion) {
+        Habitacion habitaciones = habitacionServicio.findHabitacionNumHabitacion(numHabitacion);
+        return new ResponseEntity<>(habitaciones, HttpStatus.OK);
+
+    }
+
     @PutMapping("/habitaciones/{id}")
     public ResponseEntity<Habitacion> actualizar(@PathVariable int id, @RequestBody Habitacion habitacion){
         Habitacion habitacionPorId = habitacionServicio.obtenerPorId(id);
@@ -49,5 +58,7 @@ public class HabitacionControlador {
         Habitacion habitacionActualizado = habitacionServicio.guardar(habitacionPorId);
         return new ResponseEntity<>(habitacionActualizado, HttpStatus.CREATED);
     }
+
+
 
 }
